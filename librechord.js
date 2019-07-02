@@ -182,9 +182,9 @@ function ChordDiagram(ctx, options) {
     /*
     Un acorde es un arreglo de largo this.numberOfStrings.
     En cada cuerda, se puede especificar:
-      - Una 'X', significando cuerda al aire.
+      - Una 'X', significando cuerda sin tocar.
       - Número de traste pulsado: debe ser un entero entre this.startFret y parseInt(this.numberOfFrets),
-                                  o 0 si this.startFret = 1.
+                                  o 0, significando querda al aire.
 
       - Número de traste pulsado, seguido de una '|', significando que se dibujará como un cejillo
         hecho con el dedo, seguido opcionalmente de un entero, significando otra cuerda a pulsar.
