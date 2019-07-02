@@ -1,0 +1,65 @@
+.lch-stanza {
+  font-family: monospace;
+  margin-bottom: 30px;
+  font-size: 15px;
+  z-index: 1;
+}
+
+table.lch-line {
+  border-collapse: collapse;
+  margin-bottom: 5px;
+  overflow: hidden;
+  z-index: -1;
+}
+
+table.lch-line td {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #888;
+  position: relative;
+}
+
+/* https://jsfiddle.net/ThinkingStiff/rUhCa/ */
+table.lch-line td:hover::after {
+  background-color: #ffa;
+  height: 10000px;
+  content: '\00a0';
+  left: 0;
+  position: absolute;
+  top: -5000px;
+  width: 100%;
+  z-index: -1;
+}
+
+table.lch-line .lch-chords td {
+  text-align: left;
+  font-weight: bold;
+}
+
+table.lch-line td:last-child {
+  border-right-style: none;
+}
+
+.lch-modal {
+  background-color: #fff;
+  border: 1px solid;
+  position: absolute;
+  z-index: 42;
+}
+
+.lch-close-modal {
+  font-family: sans-serif;
+  float: right;
+  cursor: pointer;
+}
+
+.lch-modal-header {
+  font-family: sans-serif;
+  cursor: move;
+  background-color: #bdf;
+}
+
+.lch-modal-title {
+  display: table;
+  margin: 0 auto;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Acordes</title>
+    <link href="librechord.css" rel="stylesheet" />
+  </head>
+  <body>
+    <pre id='lch-target'>
+    </pre>
+
+    <div id='lch-container'>
+      <table class='lch-line'>
+        <tr class="lch-chords">
+          <td></td>
+          <td>Gm</td>
+          <td>A</td>
+          <td>Dm</td>
+        </tr>
+        <tr class="lch-text">
+          <td>&nbsp;Por la blanda a</td>
+          <td>rena que&nbsp;</td>
+          <td>lame el&nbsp;</td>
+          <td>mar,</td>
+        </tr>
+      </table>
+    </div>
+    <script src="librechord.js"></script>
+    <script>
+      var request = new XMLHttpRequest();
+      request.open("GET", "alfonsina.lch", false);
+      request.send(null);
+      var data = request.responseText;
+
+      var lchnode = document.getElementById('lch-target');
+      lchnode.innerHTML = data;
+
+      var lchcon = document.getElementById('lch-container');
+
+
+      var lch = new LChorder(data, { duplicateLastChord: !false } );
+      lch.show(lchcon);
+    </script>
+  </body>
+</html>
