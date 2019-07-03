@@ -405,7 +405,7 @@ function LChorder(data, target, options) {
       let chords = rawChordLine.split('|');
       let morae = rawTextLine.split('|');
       if (chords.length != morae.length) {
-        throw `La cantidad de acordes es ${chords.length}, distinta del largo de la cantidad de moras ${morae.length}.`
+        throw `La cantidad de acordes es ${chords.length}, distinta del largo de la cantidad de moras ${morae.length}. Revisa tus separa|dores.`
       }
 
       for (let j=0; j<chords.length; j++) {
