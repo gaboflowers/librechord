@@ -493,6 +493,7 @@ function LChorder(data, target, options) {
   }
 
   this.showChordName = function (chordName, event) {
+      chordName = chordName.trim();
       let chord = this.findChord(chordName);
       if (!chord) {
           return;
