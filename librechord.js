@@ -121,7 +121,7 @@ function ChordDiagram(ctx, options) {
       fret = barAndFret[1] == '' ? undefined: barAndFret[1];
     }
 
-    if (fret === 0 && !bar) {
+    if ((fret === 0 || fret === '0') && !bar) {
       return;
     }
 
@@ -184,7 +184,7 @@ function ChordDiagram(ctx, options) {
     En cada cuerda, se puede especificar:
       - Una 'X', significando cuerda sin tocar.
       - Número de traste pulsado: debe ser un entero entre this.startFret y parseInt(this.numberOfFrets),
-                                  o 0, significando querda al aire.
+                                  o 0, significando cuerda al aire.
 
       - Número de traste pulsado, seguido de una '|', significando que se dibujará como un cejillo
         hecho con el dedo, seguido opcionalmente de un entero, significando otra cuerda a pulsar.
@@ -289,6 +289,7 @@ function LChorder(data, target, options) {
   this.lastDecodedStanza = [];
   this.doubleNewLine = false;
   this.attachedChords = {};
+  this.chordDefinitions = options.chordDefinitions;
 
   this.parseOptions = function(options) {
     options.duplicateLastChord = options.duplicateLastChord === undefined ? false : options.duplicateLastChord;
@@ -480,18 +481,31 @@ function LChorder(data, target, options) {
   }
 
   this.findChord = function (chordName) {
-    return this.attachedChords[chordName];
+    // Los acordes agregados manualmente tienen prioridad
+    if (chordName in this.attachedChords) {
+      return this.attachedChords[chordName];
+    }
+    // Si no, buscamos en un objeto ChordDefinitions
+    if (this.chordDefinitions != undefined) {
+      return this.chordDefinitions.getChord(chordName);
+    }
+    return undefined;
   }
 
-  this.showChord = function (chordName, event) {
+  this.showChordName = function (chordName, event) {
+      let chord = this.findChord(chordName);
+      if (!chord) {
+          return;
+      }
+      this.showChord(chord, chordName, event);
+  }
+
+  this.showChord = function (chord, chordName, event) {
+    event = event || {pageX: 0, pageY: 0};
+
     // ver donde hizo clic el usuario
     let posX = event.pageX;
     let posY = event.pageY;
-
-    let chord = this.findChord(chordName);
-    if (!chord) {
-      return;
-    }
 
     // crear modal del acorde
     const modal = document.createElement('div');
@@ -536,7 +550,7 @@ function LChorder(data, target, options) {
     a.onclick = function(e) {
       e = e || window.event;
       e.preventDefault();
-      chorder.showChord(this.innerHTML, e);
+      chorder.showChordName(this.innerHTML, e);
     }
   }
 
