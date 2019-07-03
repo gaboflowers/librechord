@@ -190,7 +190,7 @@ function GuitarChordDefinitions(options) {
             return this.transposeChord(this.definitions['E'+chordSurname], 3);
         }
 
-        throw 'Acorde \'${chordName}\' no encontrado.';
+        throw `Acorde \'${chordName}\' no encontrado.`;
     }
 
     this.getChord = function (chordName) {
@@ -202,7 +202,7 @@ function GuitarChordDefinitions(options) {
             chordName = this.deflat(chordName); // pasar de forma bemol a sostenido (o natural)
         }
 
-        if (['A', 'C', 'D'].indexOf(chordName[0]) > -1 || ['G', 'G7'].indexOf(chordName) > -1) {
+        if (['A', 'C', 'D', 'E'].indexOf(chordName[0]) > -1 || ['G', 'G7'].indexOf(chordName) > -1) {
             // acordes directos
             return this.transposeChord(this.definitions[chordName], this.offset);
         }
