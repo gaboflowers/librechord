@@ -1,3 +1,38 @@
+/*
+ * This file is part of LibreChord.
+ * LibreChord is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * LibreChord is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with Covertau.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+/*
+ * Provee clase base ChordDefinitions, utilizada para almacenar definiciones
+ * de acordes.
+ *
+ * Provee clase GuitarChordDefinitions, que provee definiciones de acordes
+ * de guitarra estándar.
+ *
+ * Para implementar otro objeto InstrumentChordDefinitions, basta heredar de
+ * ChordDefinitions, e implementar getChord(chordName):
+ *
+ *     function InstrumentChordDefinitions(options) {
+ *         ChordDefinitions.call(this, options);
+ *         ...
+ *
+ *         this.getChord = function(chordName) {
+ *             ...
+ *         }
+ *      }
+ *
+ */
+
 function ChordDefinitions(options) {
     options = options || {};
     this.showLabels = options.showLabels || true;
