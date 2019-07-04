@@ -172,7 +172,7 @@ function GuitarChordDefinitions(options) {
         console.log('chordname', chordName);
 
         if (baseNote == 'B') {
-            return this.transposeChord(this.definitions['B'+chordSurname], 2);
+            return this.transposeChord(this.definitions['A'+chordSurname], 2);
         }
 
         if (baseWithAccidental == 'F#') {
