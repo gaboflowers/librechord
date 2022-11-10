@@ -40,6 +40,22 @@ table.lch-line td:last-child {
   border-right-style: none;
 }
 
+.lch-stanza-name {
+  margin-left: 2ch;
+  margin-top: 4ch;
+  font-weight: bolder;
+  font-style: italic;
+}
+
+.lch-chord-prev-to-note {
+  border-right-style: none !important;
+}
+
+.lch-chord-note {
+  border-left-style: none;
+  padding-left: 2ch;
+}
+
 .lch-modal {
   background-color: #fff;
   border: 1px solid;
